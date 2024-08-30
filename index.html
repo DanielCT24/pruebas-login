@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Registro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container" id="login-container">
+        <h1>Bienvenidos</h1>
+        <form id="login-form">
+            <div class="input-group">
+                <input type="email" id="login-email" required placeholder="Dirección de correo electrónico*">
+            </div>
+            <div class="input-group">
+                <input type="password" id="login-password" required placeholder="Contraseña*">
+            </div>
+            <button type="submit" class="btn-primary">Iniciar sesión</button>
+        </form>
+        <p class="signup-link">¿No tienes una cuenta? <a href="#" id="register-link">Suscríbete</a></p>
+        
+        <div class="social-login">
+            <button id="google-login" class="btn-social google">Continuar con Google</button>
+            <button id="facebook-login" class="btn-social facebook">Continuar con Facebook</button>
+        </div>
+    </div>
+
+    <div class="register-container" id="register-container" style="display: none;">
+        <h1>Registrarse</h1>
+        <form id="register-form">
+            <div class="input-group">
+                <input type="text" id="register-name" required placeholder="Nombre completo*">
+            </div>
+            <div class="input-group">
+                <input type="email" id="register-email" required placeholder="Dirección de correo electrónico*">
+            </div>
+            <div class="input-group">
+                <input type="password" id="register-password" required placeholder="Contraseña*">
+            </div>
+            <div class="input-group">
+                <input type="tel" id="register-phone" required placeholder="Número de teléfono*">
+            </div>
+            <button type="submit" class="btn-primary">Registrar</button>
+        </form>
+        <p class="login-link">¿Ya tienes una cuenta? <a href="#" id="login-back-link">Inicia sesión</a></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
