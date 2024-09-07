@@ -1,65 +1,64 @@
-// Referencias a los elementos del DOM
-const loginContainer = document.getElementById('login-container');
-const registerContainer = document.getElementById('register-container');
-const loginForm = document.getElementById('login-form');
-const registerForm = document.getElementById('register-form');
+//Ejecutando funciones
+document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
+document.getElementById("btn__registrarse").addEventListener("click", register);
+window.addEventListener("resize", anchoPage);
 
-// Mostrar el formulario de registro
-document.getElementById('register-link').addEventListener('click', function(event) {
-    event.preventDefault();
-    loginContainer.style.display = 'none';
-    registerContainer.style.display = 'block';
-});
+//Declarando variables
+var formulario_login = document.querySelector(".formulario__login");
+var formulario_register = document.querySelector(".formulario__register");
+var contenedor_login_register = document.querySelector(".contenedor__login-register");
+var caja_trasera_login = document.querySelector(".caja__trasera-login");
+var caja_trasera_register = document.querySelector(".caja__trasera-register");
 
-// Volver al formulario de inicio de sesión
-document.getElementById('login-back-link').addEventListener('click', function(event) {
-    event.preventDefault();
-    registerContainer.style.display = 'none';
-    loginContainer.style.display = 'block';
-});
+    //FUNCIONES
 
-// Registrar nuevo usuario
-registerForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const name = document.getElementById('register-name').value;
-    const email = document.getElementById('register-email').value;
-    const password = document.getElementById('register-password').value;
-    const phone = document.getElementById('register-phone').value;
+function anchoPage(){
 
-    if (localStorage.getItem(email)) {
-        alert('El usuario ya está registrado.');
-    } else {
-        localStorage.setItem(email, JSON.stringify({name: name, password: password, phone: phone}));
-        alert('Registro exitoso. Ahora puedes iniciar sesión.');
-        registerContainer.style.display = 'none';
-        loginContainer.style.display = 'block';
+    if (window.innerWidth > 850){
+        caja_trasera_register.style.display = "block";
+        caja_trasera_login.style.display = "block";
+    }else{
+        caja_trasera_register.style.display = "block";
+        caja_trasera_register.style.opacity = "1";
+        caja_trasera_login.style.display = "none";
+        formulario_login.style.display = "block";
+        contenedor_login_register.style.left = "0px";
+        formulario_register.style.display = "none";   
     }
-});
+}
 
-// Iniciar sesión
-loginForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
+anchoPage();
 
-    const user = JSON.parse(localStorage.getItem(email));
 
-    if (user && user.password === password) {
-        alert('Inicio de sesión exitoso');
-        window.location.href = "bienvenido.html"; // Redirige a otra página HTML
-    } else {
-        alert('Correo electrónico o contraseña incorrectos.');
+    function iniciarSesion(){
+        if (window.innerWidth > 850){
+            formulario_login.style.display = "block";
+            contenedor_login_register.style.left = "10px";
+            formulario_register.style.display = "none";
+            caja_trasera_register.style.opacity = "1";
+            caja_trasera_login.style.opacity = "0";
+        }else{
+            formulario_login.style.display = "block";
+            contenedor_login_register.style.left = "0px";
+            formulario_register.style.display = "none";
+            caja_trasera_register.style.display = "block";
+            caja_trasera_login.style.display = "none";
+        }
     }
-});
 
-// Funcionalidad de placeholder para iniciar sesión con Google
-document.getElementById('google-login').addEventListener('click', function() {
-    alert('Funcionalidad de inicio de sesión con Google no implementada.');
-    // Aquí puedes agregar la lógica de OAuth
-});
-
-// Funcionalidad de placeholder para iniciar sesión con Facebook
-document.getElementById('facebook-login').addEventListener('click', function() {
-    alert('Funcionalidad de inicio de sesión con Facebook no implementada.');
-    // Aquí puedes agregar la lógica de OAuth
-});
+    function register(){
+        if (window.innerWidth > 850){
+            formulario_register.style.display = "block";
+            contenedor_login_register.style.left = "410px";
+            formulario_login.style.display = "none";
+            caja_trasera_register.style.opacity = "0";
+            caja_trasera_login.style.opacity = "1";
+        }else{
+            formulario_register.style.display = "block";
+            contenedor_login_register.style.left = "0px";
+            formulario_login.style.display = "none";
+            caja_trasera_register.style.display = "none";
+            caja_trasera_login.style.display = "block";
+            caja_trasera_login.style.opacity = "1";
+        }
+}
